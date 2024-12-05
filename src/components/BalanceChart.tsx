@@ -5,12 +5,12 @@ const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', '
 
 const BalanceChart = () => {
   return (
-    <div className="bg-white rounded-xl border border-gray-100 p-4">
+    <div className="bg-dark-400 rounded-xl border border-dark-100 p-4">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
           <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 rounded-full bg-emerald-50 flex items-center justify-center">
-              <svg width="14" height="14" viewBox="0 0 24 24" className="text-emerald-600">
+            <div className="w-6 h-6 rounded-full bg-emerald-900/20 flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 24 24" className="text-emerald-400">
                 <path fill="currentColor" d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
               </svg>
             </div>
@@ -18,27 +18,27 @@ const BalanceChart = () => {
           </div>
           <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
-              <span className="text-xs text-gray-600">Income</span>
+              <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+              <span className="text-xs text-gray-400">Income</span>
             </div>
             <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 rounded-full bg-emerald-200"></div>
-              <span className="text-xs text-gray-600">Expenses</span>
+              <div className="w-2 h-2 rounded-full bg-emerald-700"></div>
+              <span className="text-xs text-gray-400">Expenses</span>
             </div>
           </div>
         </div>
         <div className="flex items-center space-x-2">
-          <button className="px-3 py-1 text-sm rounded-lg bg-gray-50 text-gray-600 hover:bg-gray-100">Weekly</button>
-          <button className="px-3 py-1 text-sm rounded-lg bg-gray-100 text-gray-900">Monthly</button>
-          <button className="w-8 h-8 flex items-center justify-center hover:bg-gray-50 rounded-lg">
-            <MoreHorizontal className="w-4 h-4 text-gray-400" />
+          <button className="px-3 py-1 text-sm rounded-lg bg-dark-300 text-gray-400 hover:bg-dark-200">Weekly</button>
+          <button className="px-3 py-1 text-sm rounded-lg bg-dark-200 text-white">Monthly</button>
+          <button className="w-8 h-8 flex items-center justify-center hover:bg-dark-300 rounded-lg">
+            <MoreHorizontal className="w-4 h-4 text-gray-500" />
           </button>
         </div>
       </div>
 
       <div className="relative h-[280px]">
         {/* Y-axis labels */}
-        <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-400 py-4">
+        <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-500 py-4">
           <span>$5K</span>
           <span>$4K</span>
           <span>$3K</span>
@@ -53,7 +53,7 @@ const BalanceChart = () => {
             {/* Grid lines */}
             <div className="absolute inset-0 flex flex-col justify-between">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="border-t border-gray-100 w-full h-0"></div>
+                <div key={i} className="border-t border-dark-100 w-full h-0"></div>
               ))}
             </div>
 
@@ -67,8 +67,8 @@ const BalanceChart = () => {
                       <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs rounded-lg py-1.5 px-2.5 whitespace-nowrap z-10">
                         <div className="font-medium mb-0.5">June 28</div>
                         <div className="flex items-center justify-between gap-3">
-                          <span className="text-emerald-400">$1200</span>
-                          <span className="text-emerald-200">$690</span>
+                          <span className="text-emerald-500">$1200</span>
+                          <span className="text-emerald-700">$690</span>
                         </div>
                         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900"></div>
                       </div>
@@ -76,16 +76,16 @@ const BalanceChart = () => {
                     
                     <div className="space-y-1">
                       <div 
-                        className={`w-full bg-emerald-400 rounded-sm transition-all duration-200 ${month === 'JUN' ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`}
+                        className={`w-full bg-emerald-500 rounded-sm transition-all duration-200 ${month === 'JUN' ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`}
                         style={{ height: month === 'JUN' ? '120px' : `${Math.random() * 80 + 40}px` }}
                       ></div>
                       <div 
-                        className={`w-full bg-emerald-200 rounded-sm transition-all duration-200 ${month === 'JUN' ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`}
+                        className={`w-full bg-emerald-700 rounded-sm transition-all duration-200 ${month === 'JUN' ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`}
                         style={{ height: month === 'JUN' ? '60px' : `${Math.random() * 40 + 20}px` }}
                       ></div>
                     </div>
                   </div>
-                  <div className={`text-xs text-center mt-2 ${month === 'JUN' ? 'text-emerald-600 font-medium' : 'text-gray-400'}`}>
+                  <div className={`text-xs text-center mt-2 ${month === 'JUN' ? 'text-emerald-400 font-medium' : 'text-gray-500'}`}>
                     {month}
                   </div>
                 </div>

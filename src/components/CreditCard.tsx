@@ -2,10 +2,10 @@ import React from 'react';
 
 const CreditCard = () => {
   return (
-    <div className="bg-white rounded-lg p-6">
+    <div className="bg-dark-400 rounded-lg p-6 border border-dark-100">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-medium">My Cards</h3>
-        <button className="text-sm text-gray-500 hover:text-gray-700">See All</button>
+        <button className="text-sm text-gray-400 hover:text-gray-200">See All</button>
       </div>
       
       <div className="relative w-full aspect-[1.586/1] rounded-xl overflow-hidden">
@@ -44,9 +44,9 @@ const CreditCard = () => {
       
       <div className="flex justify-center mt-4">
         <div className="flex space-x-1">
-          <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-          <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-          <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+          <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
+          <div className="w-2 h-2 rounded-full bg-dark-200"></div>
+          <div className="w-2 h-2 rounded-full bg-dark-200"></div>
         </div>
       </div>
     </div>
