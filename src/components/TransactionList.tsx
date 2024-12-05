@@ -1,11 +1,11 @@
 import React from 'react';
-import { ArrowDownLeft, ArrowUpRight, RotateCcw, Filter, MoreVertical } from 'lucide-react';
+import { ArrowDownLeft, ArrowUpRight, RotateCcw, Filter, ArrowRight } from 'lucide-react';
 
 const transactions = [
   {
     id: 1,
     name: 'Hashtagfox OU',
-    date: 'December 3',
+    date: 'Received · December 3',
     amount: '+1250 USD',
     status: 'Completed',
     type: 'received'
@@ -13,7 +13,7 @@ const transactions = [
   {
     id: 2,
     name: 'K M Robiul Islam',
-    date: 'December 4',
+    date: 'Sent · December 4',
     amount: '+5678 USD',
     status: 'Pending',
     type: 'sent'
@@ -21,7 +21,7 @@ const transactions = [
   {
     id: 3,
     name: 'Md Sharif Mollah',
-    date: 'December 6',
+    date: 'Sent · December 6',
     amount: '-945 USD',
     status: 'Completed',
     type: 'sent'
@@ -30,55 +30,64 @@ const transactions = [
 
 const TransactionList = () => {
   return (
-    <div className="bg-white rounded-xl border border-gray-100">
-      <div className="p-4 border-b border-gray-100">
+    <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
+      <div className="px-4 py-3 border-b border-gray-100">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
-              <img src="/path-to-transaction-icon.png" alt="" className="w-4 h-4" />
-              <h3 className="font-medium">Transactions</h3>
+              <span className="inline-flex items-center">
+                <svg className="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 3V8.4C3 9.88071 4.11929 11 5.6 11H9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M3 8L8.34315 2.65685C8.72361 2.27639 9.27639 2.27639 9.65685 2.65685L15 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M21 21V15.6C21 14.1193 19.8807 13 18.4 13H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M21 16L15.6569 21.3431C15.2764 21.7236 14.7236 21.7236 14.3431 21.3431L9 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+              </span>
+              <span className="text-sm font-medium">Transactions</span>
             </div>
             <div className="flex items-center space-x-2">
               <RotateCcw className="w-4 h-4 text-gray-400" />
-              <button className="text-sm text-gray-500 hover:text-gray-900">
-                This Month
-                <span className="mx-2">·</span>
-              </button>
-              <button className="flex items-center space-x-1 text-sm text-gray-500 hover:text-gray-900">
+              <button className="flex items-center space-x-1.5 text-sm text-gray-500">
                 <Filter className="w-4 h-4" />
                 <span>Filter</span>
               </button>
+              <button className="text-sm text-gray-500">This Month</button>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <button className="text-sm text-gray-500 hover:text-gray-900">See All</button>
-            <button className="w-8 h-8 flex items-center justify-center hover:bg-gray-50 rounded-lg">
-              <MoreVertical className="w-4 h-4 text-gray-400" />
-            </button>
-          </div>
+          <button className="text-sm text-gray-500 flex items-center space-x-1">
+            <span>See All</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
-      <div className="divide-y divide-gray-50">
+      <div className="divide-y divide-gray-100">
+        <div className="px-4 py-2 bg-gray-50/50">
+          <div className="grid grid-cols-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <div>TYPE</div>
+            <div>STATUS</div>
+            <div className="text-right">AMOUNT</div>
+          </div>
+        </div>
         {transactions.map((transaction) => (
-          <div key={transaction.id} className="flex items-center p-4 hover:bg-gray-50">
+          <div key={transaction.id} className="flex items-center px-4 py-3 hover:bg-gray-50/50">
             <div className={`w-10 h-10 rounded-full ${
               transaction.type === 'received' ? 'bg-emerald-50' : 'bg-emerald-50'
             } flex items-center justify-center mr-3`}>
               {transaction.type === 'received' ? (
-                <ArrowDownLeft className="w-5 h-5 text-emerald-500" />
+                <ArrowDownLeft className="w-5 h-5 text-emerald-600" />
               ) : (
-                <ArrowUpRight className="w-5 h-5 text-emerald-500" />
+                <ArrowUpRight className="w-5 h-5 text-emerald-600" />
               )}
             </div>
             <div className="flex-grow">
               <div className="font-medium text-gray-900">{transaction.name}</div>
-              <div className="text-sm text-gray-500">
-                {transaction.type === 'received' ? 'Received' : 'Sent'} · {transaction.date}
-              </div>
+              <div className="text-sm text-gray-500">{transaction.date}</div>
             </div>
             <div className="text-right">
-              <div className="font-medium text-gray-900">{transaction.amount}</div>
+              <div className={`font-medium ${transaction.amount.startsWith('+') ? 'text-emerald-600' : 'text-gray-900'}`}>
+                {transaction.amount}
+              </div>
               <div className={`text-sm ${
                 transaction.status === 'Completed' ? 'text-emerald-500' : 'text-gray-500'
               }`}>
@@ -95,8 +104,9 @@ const TransactionList = () => {
             <h3 className="font-medium mb-1">A secure financial future for your family.</h3>
             <p className="text-sm text-gray-500">Our services give you the tools to manage, track and grow your wealth.</p>
           </div>
-          <button className="text-sm font-medium text-gray-900 hover:text-gray-700">
+          <button className="text-sm font-medium text-gray-900 hover:text-gray-700 flex items-center">
             Learn More
+            <ArrowRight className="w-4 h-4 ml-1" />
           </button>
         </div>
       </div>

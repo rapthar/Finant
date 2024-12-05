@@ -4,16 +4,18 @@ import BalanceCard from './components/BalanceCard';
 import BalanceChart from './components/BalanceChart';
 import TransactionList from './components/TransactionList';
 import CreditCard from './components/CreditCard';
-import { Plus, Search, Command, Grid3X3, ArrowUpRight } from 'lucide-react';
+import { IncomesWidget, ExpendsWidget, PromoWidget } from './components/AnalyticsWidgets';
+import { Plus, Search, Command, Grid3X3, ArrowUpRight, Filter, ChevronDown, Copy, Bell, CircleUser } from 'lucide-react';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white flex">
-      <Sidebar />
-      
-      <div className="flex-1">
+    <div className="min-h-screen bg-white flex overflow-hidden">
+      <div className="flex-none">
+        <Sidebar />
+      </div>
+      <div className="flex-1 overflow-y-auto">
         {/* Header */}
-        <div className="h-14 border-b border-gray-100 px-4 flex items-center justify-between">
+        <div className="h-14 border-b border-gray-100 px-4 flex items-center justify-between bg-white/80 backdrop-blur-sm sticky top-0 z-10">
           <div className="flex items-center space-x-2">
             <div className="flex items-center">
               <span className="text-sm">Dashboards</span>
@@ -25,10 +27,10 @@ function App() {
           <div className="flex items-center space-x-4">
             <div className="relative">
               <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
-              <input 
-                type="text" 
-                placeholder="Search or type a command" 
-                className="pl-9 pr-9 py-1.5 w-80 text-sm border border-gray-200 rounded-lg"
+              <input
+                type="text"
+                placeholder="Search or type a command"
+                className="pl-9 pr-16 py-1.5 w-80 text-sm border border-gray-200 rounded-lg bg-gray-50/50 focus:bg-white transition-colors"
               />
               <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center space-x-1">
                 <Command className="w-3 h-3 text-gray-400" />
@@ -38,11 +40,12 @@ function App() {
             <button className="w-9 h-9 flex items-center justify-center border border-gray-200 rounded-lg">
               <Grid3X3 className="w-4 h-4 text-gray-600" />
             </button>
-            <button className="w-9 h-9 flex items-center justify-center border border-gray-200 rounded-lg">
-              <img src="/path-to-your-icon.png" alt="" className="w-4 h-4" />
+            <button className="w-9 h-9 flex items-center justify-center border border-gray-200 rounded-lg relative">
+              <Bell className="w-4 h-4 text-gray-600" />
+              <div className="absolute top-2 right-2 w-2 h-2 bg-emerald-500 rounded-full"></div>
             </button>
             <button className="w-9 h-9 flex items-center justify-center border border-gray-200 rounded-lg">
-              <img src="/path-to-your-icon.png" alt="" className="w-4 h-4" />
+              <CircleUser className="w-4 h-4 text-gray-600" />
             </button>
             <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium flex items-center space-x-2">
               <span>Export</span>
@@ -64,17 +67,17 @@ function App() {
                 </div>
                 <div className="text-2xl font-semibold flex items-center">
                   BDT 796,476.00
-                  <img src="/path-to-copy-icon.png" alt="" className="w-4 h-4 ml-2 cursor-pointer" />
+                  <Copy className="w-4 h-4 ml-2 cursor-pointer text-gray-400 hover:text-gray-600" />
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <button className="h-9 px-3 bg-white rounded-lg border border-gray-200 text-sm flex items-center space-x-2">
-                  <img src="/path-to-filter-icon.png" alt="" className="w-4 h-4" />
+                  <Filter className="w-4 h-4 text-gray-600" />
                   <span>Filters</span>
                 </button>
                 <button className="h-9 px-3 bg-white rounded-lg border border-gray-200 text-sm flex items-center space-x-2">
                   <span>Last 30 days</span>
-                  <img src="/path-to-chevron-icon.png" alt="" className="w-4 h-4" />
+                  <ChevronDown className="w-4 h-4 text-gray-600" />
                 </button>
               </div>
             </div>
@@ -103,11 +106,21 @@ function App() {
             </div>
 
             <div className="grid grid-cols-2 gap-8 mb-8">
-              <CreditCard />
-              <BalanceChart />
+              <div className="space-y-6">
+                <CreditCard />
+                <BalanceChart />
+              </div>
+              <div className="space-y-6">
+                <div className="grid grid-cols-2 gap-6">
+                  <IncomesWidget />
+                  <ExpendsWidget />
+                </div>
+                <TransactionList />
+                <PromoWidget />
+              </div>
             </div>
 
-            <TransactionList />
+            {/* <TransactionList /> */}
           </div>
         </div>
       </div>

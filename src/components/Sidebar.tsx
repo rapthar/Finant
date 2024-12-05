@@ -38,7 +38,7 @@ const MenuItem = ({ icon: Icon, text, count, active = false, hasDropdown = false
 
 const Sidebar = () => {
   return (
-    <div className="w-64 bg-white h-screen flex flex-col">
+    <div className="sticky top-0 h-[100vh] w-72 bg-white border-r border-gray-100 flex flex-col overflow-y-auto">
       {/* Header */}
       <div className="px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
@@ -89,25 +89,36 @@ const Sidebar = () => {
 
       {/* Footer */}
       <div className="mt-auto px-4 pb-4">
-        <div className="bg-gray-50 rounded-xl p-3 mb-4">
-          <div className="flex items-center">
-            <Zap className="w-5 h-5 text-emerald-500 mr-2" />
-            <span className="font-medium">Upgrade to Pro</span>
+        <div className="flex flex-col space-y-3">
+          <div className="bg-white rounded-xl p-3 border border-gray-100 flex items-center space-x-3 cursor-pointer hover:bg-gray-50">
+            <div className="w-5 h-5 text-emerald-500">
+              <Zap className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="font-medium text-sm">Upgrade to Pro</div>
+              <p className="text-xs text-gray-500">Get 1 month free and unlock</p>
+            </div>
           </div>
-          <p className="text-sm text-gray-500 mt-1">Get 1 month free and unlock</p>
-        </div>
 
-        <div className="flex items-center">
-          <img 
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=64&h=64&q=80&fit=crop" 
-            alt="Profile" 
-            className="w-8 h-8 rounded-full object-cover"
-          />
-          <div className="ml-3 flex-grow">
-            <div className="text-sm font-medium">Mncedisi Bhembe</div>
-            <div className="text-xs text-gray-500">cowded268@gmail.com</div>
+          <div className="px-3 py-2 hover:bg-gray-50 rounded-lg cursor-pointer flex items-center">
+            <Settings className="w-5 h-5 text-gray-400 mr-3" strokeWidth={1.5} />
+            <span className="text-[15px] text-gray-500">Settings</span>
           </div>
-          <Copy className="w-4 h-4 text-gray-400 cursor-pointer" />
+
+          <div className="flex items-center justify-between px-3 py-2 bg-white rounded-xl border border-gray-100">
+            <div className="flex items-center">
+              <img 
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=64&h=64&q=80&fit=crop" 
+                alt="Profile" 
+                className="w-8 h-8 rounded-full object-cover"
+              />
+              <div className="ml-3">
+                <div className="text-sm font-medium">Shakib Ali</div>
+                <div className="text-xs text-gray-500">shakibali778@gmail.com</div>
+              </div>
+            </div>
+            <Copy className="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" />
+          </div>
         </div>
       </div>
     </div>

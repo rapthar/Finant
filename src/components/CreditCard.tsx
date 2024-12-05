@@ -9,7 +9,7 @@ const CreditCard = () => {
       </div>
       
       <div className="relative w-full aspect-[1.586/1] rounded-xl overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600">
           <div className="absolute inset-0 opacity-30 mix-blend-overlay">
             <svg className="w-full h-full">
               <pattern id="pattern" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
@@ -26,9 +26,7 @@ const CreditCard = () => {
               <div className="text-sm opacity-80 mb-1">Balance</div>
               <div className="text-2xl font-semibold">$24,098.00</div>
             </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" 
-                 alt="Visa" 
-                 className="h-8" />
+            <div className="text-white text-2xl font-bold tracking-wider">VISA</div>
           </div>
           
           <div className="mt-auto">
